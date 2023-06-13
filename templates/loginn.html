@@ -1,0 +1,60 @@
+
+
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Electron bike</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css'    >
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <div class="container">
+        <div id="login-box">
+            <div class="logo">
+
+                <br>
+                <center>
+                    <img src= "{% static 'img/Logo_yellow.png' %}" width="270" height="100" />
+                    <br>
+                    <br><br>
+                    <h4 class="logo-caption">Bienvenue dans le système ERP de la sarl Electron Bike.</h4>
+                </center>
+
+            </div>
+            <!-- /.logo -->
+            <div class="controls">
+                <center>
+                    <form method="POST">
+                        {% csrf_token %}
+                    <input type="text" name="username" placeholder="Username" class="form-control" />
+                    <input type="password" name="password" placeholder="password" class="form-control" />
+                    <input type="submit" class="btn btn-default btn-block btn-custom" value="Se connecter"  ></input>
+                    <form>
+                </center>
+            </div>
+        </div>
+    </div>
+    <div id="particles-js"></div>
+    
+    <!-- partial -->
+    <script src= 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css'    ></script>
+    <script src= 'https://code.jquery.com/jquery-1.11.1.min.js'  ></script>
+    <script src= " {%static  'js/script.js'  %} "></script>
+
+</body>
+
+</html>

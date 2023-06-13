@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Electron bike</title>
+
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href= "{%static 'G_stock_/css/styles.css' %}"   >
+</head>
+
+<body>
+    <div class="grid-container">
+
+
+
+        <!-- Sidebar -->
+        <aside id="sidebar">
+            <div class="sidebar-title">
+                <div>
+                    <center>
+                        <img src= "{%static 'G_stock_/img/Logo_yllw.png' %}"     width="140" height="70">
+                    </center>
+                </div>
+                <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+            </div>
+
+            <ul class="sidebar-list">
+                <br><br>
+                <li class="sidebar-list-item">
+                    <a href= "{%url 'GS_home'%}" >
+                        <span class="material-icons-outlined"> Visualisation de Stock</span>
+
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="{%url 'RC'%}" >
+                        <span class="material-icons-outlined">  Entree de stock  </span>
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="{%url 'frn'%}">
+                        <span class="material-icons-outlined"> Fournisseur &nbsp; &nbsp;  </span>
+
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="{%url 'Gestion_lvn'%}">
+                        <span class="material-icons-outlined"> Gestion des livraisons</span>
+                    </a>
+                </li>
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <li>
+                    &nbsp; &nbsp;
+                    <a href="{%url 'deco'%}"   > <img src=  "{%static 'G_stock_/img/se-dec.png' %}"    width="135" height="44"> </a>
+
+                </li>
+            </ul>
+        </aside>
+        <!-- End Sidebar -->
+
+        <!-- Main -->
+        <main>
+
+        </main>
+
+        <center>
+            <br>
+            <img src=  "{% static 'G_stock_/img/Gr_Dep.png' %}"     width="300" height="60">
+            <br>
+            <bR> <br> <br>
+
+            
+
+
+
+        </center>
+
+        <!-- End Main -->
+    </div>
+
+
+
+    <!-- Custom JS -->
+    <script src=  "{%static 'G_stock_/js/scripts.js' %}"   ></script>
+</body>
+
+</html>

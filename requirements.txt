@@ -1,0 +1,10 @@
+Django
+djangorestframework
+dj-rest-auth
+django-allauth
+pillow
+django-cors-headers
+email_validator
+drf_writable_nested
+django-filter
+drf-yasg

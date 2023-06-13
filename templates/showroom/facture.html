@@ -1,0 +1,122 @@
+
+{% load static %}
+{% block content %}
+<head>
+	<title>Exemple de zone de travail</title>
+	<style>
+		#facture {
+			width: 690px;
+			height: 1080px;
+			background-color: rgb(255, 255, 255);
+      position: fixed;
+      left:30px;
+      top: 18px;
+      border: 2px solid black;
+		}
+    #cash {
+
+     padding-left: 550;
+     padding-top: 0;
+    }
+    #payer {
+
+    padding-left: 30;
+    padding-top: 30;
+    }
+    #informations {
+
+    border-collapse: separate;
+    border-spacing: 20px 8px;
+    }
+    #informations td:first-child {
+  padding-right: 75px;
+}
+
+   #informations td:nth-child(2) {
+  padding-left: 75px;
+}
+    h1 {
+font-size: 34px;
+
+    }
+    h2 {
+      color: #edca06;
+    }
+    p {
+      font-size: 17px;
+    }
+    .table-produits td.name-col {
+      padding-left: 47px;
+      padding-right: 180px;
+    }
+
+    .table-produits td.price-col {
+      padding-left: 42px;
+      padding-right: 100px;
+    }
+
+    .table-produits td.quantity-col {
+      padding-left: 100px;
+    }
+
+	</style>
+</head>
+  <section>
+  <div   id="facture"  > 
+    <br> <br> 
+   &nbsp; &nbsp; &nbsp; &nbsp;
+   <img src= "{% static 'showroom/Logo.png' %}" width="140" height="30" /> <br><br> 
+   
+   &nbsp; &nbsp;&nbsp;<img src= "{% static 'showroom/contact.png' %}" width="250" height="90" /> <br> 
+
+   
+
+  <center>    <h1>Facture</h1>  </center>
+  <table id="informations">
+
+    <tr>
+      <td> 
+        <h2>Informations client:</h2>
+        <p>Nom : {{ nom }}</p>
+        <p>Prénom : {{ prenom }}</p>
+        <p>E-mail : {{ email }}</p>
+      </td>
+      <td> 
+        <h2> Informations Facture: </h2>
+        <p>  Numero facture : {{id}} </p>
+        <p> Date: {{ date }} </p>
+        <p>  &nbsp; </p>
+      </td>
+    </tr>
+  </table>
+  <br><br> 
+   &nbsp;&nbsp;&nbsp; <img src= "{% static 'showroom/barre_showroom.png' %}" width="640" height="30" /> 
+   <br>
+ <table class="table-produits">
+{% for item in panier.all %}
+<tr>
+  
+  <td class="name-col"> <h4>{{ item.product.name }}</h4></td>
+  <td class="price-col"><h4>{{ item.product.sale_price }}</h4></td>
+  <td class="quantity-col"><h4>{{ item.quantity }}</h4></td>
+ 
+</tr>
+
+
+{% endfor %}
+</table>
+
+<!--                          -->
+
+  <div id="payer" >  
+  <h4>Total: {{ Total }} DA</h4>
+  <h4> Reduction : {{reduction}}.00 %   </h4>
+  <h4> Tva : 19.00 %   </h4>
+  <h4>  Prix TTC: {{ TTC }} DA  </h4>   </div>
+  <div id="cash">  <img src= "{% static 'showroom/cash.png' %}" width="140" height="140" />      </div>
+</div>
+
+
+</section>
+
+{% endblock %}

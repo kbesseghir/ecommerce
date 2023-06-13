@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+.container {
+    padding: 30px;
+}
+
+.card {
+    width: 250px;
+    height: 485px;
+    background-color: #383837;
+}
+
+.header {
+    padding: 3px;
+    background-color: #eecb04;
+}
+
+.container h3 {
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 1rem;
+}
+
+.iconM {
+    font-size: 18px;
+    color: #2f89fc;
+}
+
+.body li {
+    transition: 1s all;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    padding: 15px;
+    margin-left: -40px;
+    margin-top: 0px;
+    color: #fff;
+    list-style: none;
+    display: block;
+    border-top-right-radius: 10px 10px;
+}
+
+.container li:hover {
+    transition: 1s all;
+    color: #eecb04;
+    background-color: rgba(255, 200, 0, 0.1);
+    cursor: pointer;
+}
+
+.body>li {
+    float: left;
+}
+
+.body li ul {
+    background: #1E2B32;
+    margin-left: 280px;
+    margin-top: -38px;
+    display: none;
+    position: absolute;
+    border-top-right-radius: 15px 15px;
+    border-bottom-right-radius: 15px 15px;
+}
+
+.body li:hover>ul {
+    display: block;
+    cursor: pointer;
+}
+
+.body a {
+    color: #fff;
+}
+
+.body .btn {
+    font-family: 'system-ui';
+    font-weight: bold;
+    margin-top: 40px;
+    max-width: 130px;
+    background: none;
+    border-color: rgba(48, 46, 45, 1);
+    color: #fff;
+}

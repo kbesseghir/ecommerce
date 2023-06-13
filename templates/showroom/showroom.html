@@ -1,0 +1,129 @@
+{% load static %}
+<html>
+<head>
+  <link rel="stylesheet" href= "{% static 'G_stock_/css/styles.css' %}">
+  <style>
+    input, select {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 0.25rem;
+      border: 1px solid #ccc;
+      margin-right: 0.5rem;
+    }
+
+    button[type="submit"] {
+      background-color: #FFD700	;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #FFD700	;
+    }
+
+    .table-produits {
+      padding-right: 50px;
+    }
+
+    .table-produits td.img-col {
+      padding-right: 80px;
+    }
+
+    .table-produits td.name-col {
+      padding-left: 120px;
+      padding-right: 190px;
+    }
+
+    .table-produits td.type-col {
+      padding-left: 50px;
+      padding-right: 150px;
+    }
+
+    .table-produits td.quantity-col {
+      padding-left: 140px;
+    }
+  </style>
+
+<img src= "{% static 'showroom/espace_showroom.png' %}" width="1750" height="75" />
+
+</head>
+<body>
+  <center>
+    {% block content %}
+      <br><br>
+      <h2>Produits disponibles dans le stock</h2><br>
+      <form method="GET">
+        <input type="text" name="search" placeholder="Rechercher un produit">
+        <select name="category">
+          <option value="">Toutes les catégories</option>
+          {% for category, label in product_categories %}
+            <option value="{{ category }}">{{ label }}</option>
+          {% endfor %}
+        </select>
+        <button type="submit">Rechercher</button>
+      </form><br>
+      <img src="{% static 'G_stock_/img/bar_showroom.png' %}" width="1500" height="30">
+      {% if products %}
+        <table class="table-produits">
+          {% for product in products %}
+            <tr>
+              <td class="img-col">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" width="150">
+              </td>
+              <td class="name-col">{{ product.name }}</td>
+              <td class="type-col">{{ product.category }}</td>
+              <td class="quantity-col">{{ product.quantity }}</td>
+              <td class="quantity-col">
+                <form method="POST" action="{% url 'ajouter_au_panier' %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="product_id" value="{{ product.id }}">
+                  <input type="number" name="quantity" min="1" max="{{ product.quantity }}" value="1">
+                  <button type="submit">Ajouter au panier</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </table>
+        {% else %}
+        <p>Aucun produit trouvé.</p>
+      {% endif %}
+    
+      <h2> Panier </h2>
+        {% if panier %}
+          <ul>
+            {% for item in panier %}
+              <li>
+                <form method="POST" action="{% url 'supprimer_du_panier' %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="item_id" value="{{ item.id }}">
+                 <h4> {{ item.product.name }} - prix unitaire : {{ item.product.sale_price }} - Quantité : {{ item.quantity }} &nbsp; &nbsp; &nbsp;<button type="submit">Supprimer</button> </h4> 
+                </form>
+              </li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <p>Panier vide.</p>
+        {% endif %}
+          <form method="POST" action="{% url 'passer_commande' %}">
+            {% csrf_token %}
+            <h2>Informations client</h2> <br> <br>
+            <label for="nom">Nom : &nbsp;&nbsp;</label>
+            <input type="text" name="nom" required> <br><br>
+            <label for="prenom">Prénom :</label> 
+            <input type="text" name="prenom" required> <br> <br>
+            <label for="email">E-mail :</label>
+            <input type="email" name="email" required> <br> <br>
+            <label for="email">Reduction client % :</label>
+            <input type="text" name="Reduction" required> <br> <br>
+            <button type="submit">Confirmer la vente</button>
+            
+          </form>
+
+          {% endblock %}
+  </center>
+</body>
+</html>
