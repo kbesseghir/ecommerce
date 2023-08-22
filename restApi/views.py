@@ -4,9 +4,7 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
-
 from api.serializers import *
-
 
 from multiprocessing import Value
 from django.utils import timezone
